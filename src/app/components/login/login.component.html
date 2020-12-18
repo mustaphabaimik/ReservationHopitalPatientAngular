@@ -1,0 +1,57 @@
+ <div id="login" style="margin-top: 150px;">
+
+		<h1><strong>Welcome.</strong> Please login.</h1>
+
+		<form action="" method="POST" (ngSubmit)="login()" #f="ngForm">
+
+			<fieldset>
+
+				<p>
+					<input type="text" email name="email" 
+                    [(ngModel)]="user.email" 
+					#email="ngModel"
+					ngModel
+					placeholder="email" 
+					required style="width: 100%;">			
+				    <span *ngIf="email.touched && email.invalid" class="error">error</span>
+				</p> <!-- JS because of IE support; better: placeholder="Username" -->
+				
+
+				<p><input type="password" required
+					name="password" 
+                    [(ngModel)]="user.password" 
+					#password="ngModel"
+					ngModel 
+					placeholder="password" style="width: 100%;">
+					<span *ngIf="password.touched && password.invalid" class="error">error</span><br>
+					<a href="#">Forgot Password?</a>
+				</p>
+					
+					
+				
+
+				<p><input type="submit" value="Login" [disabled]="!f.valid"></p>
+
+				<p>
+					<button class="facebook" style="width: 100%;" routerLink="/inscription">creer un nouveau compte</button>
+		
+				</p>
+
+			</fieldset>
+
+		</form>
+
+		<p><span class="btn-round">ou bien</span></p>
+
+		<p>
+
+			<a class="facebook-before"><i class="fa fa-google" aria-hidden="true"></i></a>
+			<button class="facebook" (click)="googlelogin()">Login Using google</button>
+
+		</p>
+
+	
+
+	</div> <!-- end login -->
+
+ 

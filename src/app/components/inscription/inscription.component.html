@@ -1,0 +1,84 @@
+<div id="login" style="margin-top: 150px;">
+
+    <h1><strong>welcome.</strong> Please login.</h1>
+
+    <form action="" method="POST" (ngSubmit)="inscription()" #f="ngForm">
+
+        <fieldset>
+
+            <p>
+                <input type="text" email name="email" 
+                [(ngModel)]="user.email" 
+                #email="ngModel"
+                ngModel
+                placeholder="email*" 
+                required style="width: 100%;">			
+                <!-- <span *ngIf="email.touched && email.invalid" class="error">error</span> -->
+                <span style="color: red;" *ngIf="email.touched && !email.valid">
+                    <span *ngIf="email.errors.required">ce champ est obligatoire !!</span>                                             
+                    <span *ngIf="email.errors.email">Veuillez entrer une adresse email valide !!</span>                                             
+                </span>
+            </p> <!-- JS because of IE support; better: placeholder="Username" -->
+            
+
+            <p><input type="password" required minlength="6"
+                name="password" 
+                [(ngModel)]="user.password" 
+                #password="ngModel"
+                ngModel 
+                placeholder="password*" style="width: 100%;">
+                <!-- <span *ngIf="password.touched && password.invalid" class="error">error</span><br> -->
+                <span style="color: red;" *ngIf="password.touched && !password.valid">
+                    <span *ngIf="password.errors.required">ce champ est obligatoire !!</span>  
+                    <span *ngIf="password.errors.minlength">ce champ doit avoir au moins {{ password.errors.minlength.actualLength }}/ {{ password.errors.minlength.requiredLength }}  caractéres !!</span>                                                                 
+                                                                                                      
+                </span>
+            </p>
+            <p><input type="text" required
+                name="nom" 
+                [(ngModel)]="user.nom" 
+                #nom="ngModel"
+                ngModel 
+                placeholder="nom*" style="width: 100%;">
+                <!-- <span *ngIf="nom.touched && nom.invalid" class="error">error</span><br> -->
+                <span style="color: red;" *ngIf="nom.touched && !nom.valid">
+                    <span *ngIf="nom.errors.required">ce champ est obligatoire !!</span>                                                                                         
+                </span>
+                
+            </p>
+            <p><input type="text" required
+                name="prenom" 
+                [(ngModel)]="user.prenom" 
+                #prenom="ngModel"
+                ngModel 
+                placeholder="prenom*" style="width: 100%;">
+                <span style="color: red;" *ngIf="prenom.touched && !prenom.valid">
+                    <span *ngIf="prenom.errors.required">ce champ est obligatoire !!</span>                                                                                         
+                </span>
+            </p>
+            <p>
+                <label for="file" class="label-file">Choisir une image</label>
+                <input
+                name="photoUrl" 
+                [(ngModel)]="user.photoUrl" 
+                #photoUrl="ngModel"
+                ngModel 
+                 id="file" class="input-file" type="file" (change)="fileisselected($event)">
+                 
+            </p>
+                
+                
+            
+
+            <p><input type="submit" value="creer" [disabled]="!f.valid"></p>
+
+         
+
+        </fieldset>
+
+    </form>
+
+
+
+</div> <!-- end login -->
+

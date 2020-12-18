@@ -24,9 +24,23 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/jquery.min.js",
+              "src/assets/js/jquery.min.js",	 
+              "src/assets/js/bootstrap.min.js",
+              "src/assets/js/jquery.easing.min.js",
+              "src/assets/js/wow.min.js",
+              "src/assets/js/jquery.scrollTo.js",
+              "src/assets/js/jquery.appear.js",
+              "src/assets/js/stellar.js",
+              "src/assets/plugins/cubeportfolio/js/jquery.cubeportfolio.min.js",
+              "src/assets/js/owl.carousel.min.js",
+              "src/assets/js/nivo-lightbox.min.js",
+              "src/assets/js/custom.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -119,6 +133,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "front"
+    }
+  },
+  "defaultProject": "front",
+  "cli": {
+    "analytics": "365334e2-fe01-4f25-bc00-55738cb38b23"
+  }
 }
