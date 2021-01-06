@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Hopital } from '../modules/hopital.module';
+import { serverProvincesResponse, serverRegionsResponse } from '../components/hopitaux/hopitaux.component';
+import { serverHopResponse } from '../components/header/header.component';
 
 
 @Injectable({
@@ -12,7 +14,7 @@ export class HopitalService {
 
 
   getall(){
-    return this.http.get<Hopital[]>("http://localhost:5000/api/hopitaux");
+    return this.http.get<serverHopResponse>("http://localhost:5000/api/hopitaux");
   }
 
   getByProvince(province:string){
@@ -45,10 +47,10 @@ export class HopitalService {
  
 
   getRegions(){
-    return this.http.get<Hopital[]>("http://localhost:5000/api/regions");
+    return this.http.get<serverRegionsResponse>("http://localhost:5000/api/regions");
   }
 
   getProvince(){
-    return this.http.get<Hopital[]>("http://localhost:5000/api/provinces");
+    return this.http.get<serverProvincesResponse>("http://localhost:5000/api/provinces");
   }
 }

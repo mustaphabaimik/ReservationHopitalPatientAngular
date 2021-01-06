@@ -14,7 +14,11 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
 
 
-    this.loginservice.authState$.subscribe(authState=>this.authState=authState);
+    this.loginservice.authState$.
+    subscribe(
+      authState=>this.authState=authState
+    );
+    
   }
 
 }

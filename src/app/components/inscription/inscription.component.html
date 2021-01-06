@@ -30,8 +30,7 @@
                 <!-- <span *ngIf="password.touched && password.invalid" class="error">error</span><br> -->
                 <span style="color: red;" *ngIf="password.touched && !password.valid">
                     <span *ngIf="password.errors.required">ce champ est obligatoire !!</span>  
-                    <span *ngIf="password.errors.minlength">ce champ doit avoir au moins {{ password.errors.minlength.actualLength }}/ {{ password.errors.minlength.requiredLength }}  caractéres !!</span>                                                                 
-                                                                                                      
+                    <span *ngIf="password.errors.minlength">ce champ doit avoir au moins {{ password.errors.minlength.actualLength }}/ {{ password.errors.minlength.requiredLength }}  caractéres !!</span>                                                                                                                                                                  
                 </span>
             </p>
             <p><input type="text" required

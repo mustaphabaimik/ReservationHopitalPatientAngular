@@ -5,4 +5,5 @@ export class User{
     nom:string;
     prenom:string;
     photoUrl:string;
+    role:string;
 }

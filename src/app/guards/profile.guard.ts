@@ -17,10 +17,12 @@ export class ProfileGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
       if(this.loginservice.auth){
+     
         return true;
       }
-
-      this.router.navigate(['/login'],{queryParams:{returnUrl:state.url}});
+     
+       
+      this.router.navigate(['/login']);
   }
   
 }

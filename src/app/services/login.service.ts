@@ -23,7 +23,9 @@ export class LoginService {
 
   constructor(private http:HttpClient,private authservice:SocialAuthService,private toastr:ToastrService) {
         authservice.authState.subscribe((userr:SocialUser) => {
-          if(userr!==null){
+          if(userr!==null){     
+        
+            sessionStorage.setItem("token",userr.authToken);
             this.auth=true;
             this.authState$.next(this.auth);
             this.userData$.next(userr);
@@ -34,8 +36,9 @@ export class LoginService {
 
   login(email:string,password:string){
       this.http.post("http://localhost:5000/api/signin",{email,password})
-      .subscribe(data=>{
+      .subscribe((data:serverresponse)=>{
           this.auth=true;
+          // sessionStorage.setItem("auth","true");
           this.authState$.next(this.auth);
           this.userData$.next(data.user);
           console.log(data);
@@ -79,13 +82,24 @@ export class LoginService {
   }
   logout(){
     this.authservice.signOut();
-    this.auth=false;
-    this.authState$.next(this.auth);
+    // this.authState$.next(this.auth);
+    sessionStorage.setItem('auth',"false");
+     this.auth=false;
+     // this.auth=true;
+     this.authState$.next(this.auth);
   }
 
   getall(){
     return this.http.get("http://localhost:5000/api/getall");
   }
+}
+
+
+interface serverresponse{
+  message:string,
+  user:User,
+  status:number,
+  token:string
 }
 
 

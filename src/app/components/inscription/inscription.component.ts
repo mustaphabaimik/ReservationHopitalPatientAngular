@@ -27,11 +27,12 @@ export class InscriptionComponent implements OnInit {
     this.formData.append("email",this.user.email);
     this.formData.append("password",this.user.password);
     this.formData.append("photoUrl",this.image);
+    this.formData.append("role","patient");
 
     console.log(this.formData);
 
     this.loginservice.inscription(this.formData)
-    .subscribe(data=>{
+    .subscribe((data:serverresponse)=>{
       this.router.navigate(['/login']);
       this.toastr.success(data.message, "félicitations", {
         timeOut: 3500,
@@ -59,4 +60,9 @@ export class InscriptionComponent implements OnInit {
     } 
   }
 
+}
+
+
+interface serverresponse{
+  message:string;
 }

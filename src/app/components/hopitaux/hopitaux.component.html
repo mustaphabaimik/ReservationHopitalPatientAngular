@@ -36,6 +36,7 @@
 </section>
 
 <div class="main" *ngIf="!result" style="position:relative;"> 
+ 
   
   <svg style="position:absolute;top:0;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="470" height="290" viewBox="0 0 470 290">
       <defs>
@@ -94,7 +95,7 @@
           <ul class="list-group shadow">
             
             <!-- list group item-->
-            <li class="list-group-item" *ngFor="let h of hopitaux.hopitaux" style="margin-bottom: 10px;">
+            <li class="list-group-item" *ngFor="let h of hopitaux" style="margin-bottom: 10px;">
               <!-- Custom content-->
               <div class="media align-items-lg-center flex-column flex-lg-row p-3">
                 <div class="media-body order-2 order-lg-1">

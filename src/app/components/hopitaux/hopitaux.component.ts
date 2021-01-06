@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Hopital } from 'src/app/modules/hopital.module';
 import { HopitalService } from 'src/app/services/hopital.service';
+import { serverHopResponse } from '../header/header.component';
 
 @Component({
   selector: 'app-hopitaux',
@@ -26,8 +27,8 @@ export class HopitauxComponent implements OnInit {
     
 
     this.hopitalservice.getall()
-      .subscribe((data)=>{ 
-        this.hopitaux=data; 
+      .subscribe((data:serverHopResponse)=>{ 
+        this.hopitaux=data.hopitaux; 
         // this.filterlist=data; 
       setInterval(() => {   
         this.loader = false;  
@@ -53,17 +54,16 @@ export class HopitauxComponent implements OnInit {
     // },3000);
    
       this.hopitalservice.getRegions()
-      .subscribe((data)=>{
+      .subscribe((data:serverRegionsResponse)=>{
         console.log("regions : "+data);  
         this.regions=data.regions;
 
      });
 
      this.hopitalservice.getProvince()
-      .subscribe((data)=>{
+      .subscribe((data:serverProvincesResponse)=>{
         console.log("province" + data);  
-        this.provinces=data.province;
-
+        this.provinces=data.provinces;
      });
 
   }
@@ -74,7 +74,7 @@ export class HopitauxComponent implements OnInit {
        this.loader=true;
       this.hopitalservice.getall()
       .subscribe((data)=>{ 
-        this.hopitaux=data; 
+        this.hopitaux=data.hopitaux; 
         // this.filterlist=data; 
         this.result=true;
       setInterval(() => {   
@@ -201,6 +201,15 @@ export class HopitauxComponent implements OnInit {
     
   // }
 
+}
+
+export interface serverRegionsResponse{
+  regions:Hopital[];
+
+}
+
+export interface serverProvincesResponse{
+  provinces:Hopital[];
 }
 
 

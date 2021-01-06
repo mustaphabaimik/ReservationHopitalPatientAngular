@@ -14,20 +14,28 @@ import { ToastrService } from 'ngx-toastr';
 export class ProfileComponent implements OnInit {
 
   myUser:any;
+  user:SocialUser;
   constructor(private authservice:SocialAuthService,
     private loginservice:LoginService,
     private router:Router,
-    private toastr:ToastrService) { }
+    private toastr:ToastrService) { 
+    
+    }
 
   ngOnInit(): void {
+
+   
 
     this.loginservice.userData$
     .pipe(
        map((userr:SocialUser|User)=>{
            if(userr instanceof SocialUser){
+            
              return {
                email:"test@test.com",
                ...userr
+              // ...this.user
+               
              };
            }
            else{
