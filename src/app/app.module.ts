@@ -22,6 +22,8 @@ import { SectionComponent } from './components/section/section.component';
 import { AccueilComponent } from './components/accueil/accueil.component';
 import { HopitauxComponent } from './components/hopitaux/hopitaux.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { MapComponent } from './components/map/map.component';
+// import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     InscriptionComponent,
     SectionComponent,
     AccueilComponent,
-    HopitauxComponent
+    HopitauxComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +48,9 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     HttpClientModule,
     SocialLoginModule,
     NgxSkeletonLoaderModule
+    // AgmCoreModule.forRoot({
+    //   apiKey:'AIzaSyCGmu5hSFjaefysoryoFafdYcBSbNMb0j0'
+    // })
   ],
   providers: [LoginService,
     {

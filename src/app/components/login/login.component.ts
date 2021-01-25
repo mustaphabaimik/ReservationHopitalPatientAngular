@@ -11,42 +11,32 @@ import { SocialAuthService } from "angularx-social-login";
 })
 export class LoginComponent implements OnInit {
 
-  user=new User;
-  auth:string;
-  constructor(private authservice:SocialAuthService,
-    private router:Router,
-    private loginservice:LoginService,
-    private route:ActivatedRoute) { }
+  user = new User;
+  auth: string;
+  constructor(private authservice: SocialAuthService,
+    private router: Router,
+    private loginservice: LoginService,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-
-    
-   
-  
-    this.loginservice.authState$.subscribe(authState=>{
-     
-          console.log(authState);
-          if(authState){
-          
-            this.router.navigateByUrl(this.route.snapshot.queryParams['returnUrl'] || '/profile');
-            
-          }
-          else{
-            
-            this.router.navigateByUrl('/login');
-          }
+    this.loginservice.authState$.subscribe(authState => {
+      console.log(authState);
+      if (authState) {
+        this.router.navigateByUrl(this.route.snapshot.queryParams['returnUrl'] || '/profile');
+      }
+      else {
+        this.router.navigateByUrl('/login');
+      }
     });
+  }
+
+  login() {
+    this.loginservice.login(this.user.email, this.user.password);
 
   }
 
-  login(){ 
-       this.loginservice.login(this.user.email,this.user.password);
-      
-  }
-
-  googlelogin(){
+  googlelogin() {
     this.loginservice.googlelogin();
-   
   }
 
 }

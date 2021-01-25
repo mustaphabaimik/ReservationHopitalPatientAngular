@@ -25,7 +25,10 @@ export class LoginService {
         authservice.authState.subscribe((userr:SocialUser) => {
           if(userr!==null){     
         
-            sessionStorage.setItem("token",userr.authToken);
+            localStorage.setItem("tokensocialuser",userr.authToken);
+            localStorage.setItem("typeuser","social");
+            localStorage.setItem("iduser",userr.id.toString());
+            localStorage.setItem("emailuser",userr.email.toString());
             this.auth=true;
             this.authState$.next(this.auth);
             this.userData$.next(userr);
@@ -35,10 +38,14 @@ export class LoginService {
    }
 
   login(email:string,password:string){
+    
       this.http.post("http://localhost:5000/api/signin",{email,password})
       .subscribe((data:serverresponse)=>{
           this.auth=true;
-          // sessionStorage.setItem("auth","true");
+          localStorage.setItem("typeuser","local");
+          localStorage.setItem("iduser",data.user.id.toString());
+          localStorage.setItem("emailuser",data.user.email);
+          
           this.authState$.next(this.auth);
           this.userData$.next(data.user);
           console.log(data);
@@ -50,7 +57,7 @@ export class LoginService {
           })
       },err=>{
            this.toastr.error(err.error.message,"Erreur", {
-            timeOut: 3500,
+            timeOut: 35000,
             progressBar: true,
             progressAnimation: 'increasing',
             positionClass: 'toast-top-left'
@@ -65,6 +72,7 @@ export class LoginService {
 
   googlelogin(){
     this.authservice.signIn(GoogleLoginProvider.PROVIDER_ID).then(user=>{
+
       this.toastr.success(`Nous sommes ravis de vous revoir ${user.name}`,"", {
         timeOut: 3500,
         progressBar: true,

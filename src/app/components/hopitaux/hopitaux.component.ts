@@ -90,8 +90,8 @@ export class HopitauxComponent implements OnInit {
       if((this.selectedRegion!=="" && this.selectedRegion!==undefined) && (this.selectedProvince!=="" && this.selectedProvince!==undefined) && (this.selectedNom!=="" && this.selectedNom!==undefined)){
         this.loader=true;
         this.hopitalservice.getByNameProvReg(this.selectedNom,this.selectedProvince,this.selectedRegion)
-        .subscribe(data=>{    
-          this.hopitaux=data;
+        .subscribe((data:serverHopResponse)=>{    
+          this.hopitaux=data.hopitaux;
           this.result=true;   
           setInterval(() => {   
             this.loader = false;  
@@ -105,8 +105,8 @@ export class HopitauxComponent implements OnInit {
       else if((this.selectedRegion!=="" && this.selectedRegion!==undefined) && (this.selectedProvince!=="" && this.selectedProvince!==undefined)){
           this.loader=true;
           this.hopitalservice.getByRegProv(this.selectedProvince,this.selectedRegion)
-          .subscribe(data=>{    
-            this.hopitaux=data; 
+          .subscribe((data:serverHopResponse)=>{    
+            this.hopitaux=data.hopitaux; 
             this.result=true;   
             setInterval(() => {   
               this.loader = false;  
@@ -118,8 +118,8 @@ export class HopitauxComponent implements OnInit {
       else if((this.selectedRegion!=="" && this.selectedRegion!==undefined) && (this.selectedNom!=="" && this.selectedNom!==undefined)){
         this.loader=true;
         this.hopitalservice.getByRegName(this.selectedNom,this.selectedRegion)
-        .subscribe(data=>{    
-          this.hopitaux=data; 
+        .subscribe((data:serverHopResponse)=>{    
+          this.hopitaux=data.hopitaux; 
           this.result=true;   
           setInterval(() => {   
             this.loader = false;  
@@ -131,8 +131,8 @@ export class HopitauxComponent implements OnInit {
       else if((this.selectedProvince!=="" && this.selectedProvince!==undefined) && (this.selectedNom!=="" && this.selectedNom!==undefined)){
         this.loader=true;
         this.hopitalservice.getByProvName(this.selectedNom,this.selectedProvince)
-        .subscribe(data=>{    
-          this.hopitaux=data;   
+        .subscribe((data:serverHopResponse)=>{    
+          this.hopitaux=data.hopitaux;   
           this.result=true; 
           setInterval(() => {   
             this.loader = false;  
@@ -147,8 +147,8 @@ export class HopitauxComponent implements OnInit {
 
           this.loader=true;
           this.hopitalservice.getByProvince(this.selectedProvince)
-          .subscribe(data=>{    
-            this.hopitaux=data; 
+          .subscribe((data:serverHopResponse)=>{    
+            this.hopitaux=data.hopitaux; 
             this.result=true;   
             setInterval(() => {   
               this.loader = false;  
@@ -163,8 +163,8 @@ export class HopitauxComponent implements OnInit {
 
         this.loader=true;
         this.hopitalservice.getByRegion(this.selectedRegion)
-        .subscribe(data=>{    
-          this.hopitaux=data; 
+        .subscribe((data:serverHopResponse)=>{    
+          this.hopitaux=data.hopitaux; 
           this.result=true;   
           setInterval(() => {   
             this.loader = false;  
@@ -178,8 +178,8 @@ export class HopitauxComponent implements OnInit {
        
         this.loader=true;
         this.hopitalservice.getByName(this.selectedNom)
-        .subscribe(data=>{    
-          this.hopitaux=data;  
+        .subscribe((data:serverHopResponse)=>{    
+          this.hopitaux=data.hopitaux;  
           this.result=true;  
           setInterval(() => {   
             this.loader = false;  

@@ -1,0 +1,33 @@
+<div id="wrapper">
+    <section id="boxes" class="home-section paddingtop-80" style="padding: 0px;">
+
+        <form action="" id="hopital">         
+            <select class="form-control" name="hop" [(ngModel)]="selectedhop" #hop="ngModel">
+                <option *ngFor="let h of hopitaux" value="{{h.ObjectId}}">{{h.nom}}</option>
+            </select>
+            <button class="btn btn-primary" (click)="showHop()" style="width: 100%;">y aller</button>
+        </form>
+        
+            <div id="map">
+               
+                <form action="" id="formMap">
+                    <input type="text" name="start" [(ngModel)]="selectedstart" #start="ngModel" class="form-control" placeholder="votre province">
+                    <!-- <input type="text" name="end" [(ngModel)]="selectedend" #end="ngModel" class="form-control"> -->
+                    <select class="form-control" name="end" [(ngModel)]="selectedend" #end="ngModel">
+                        <option *ngFor="let h of hopitaux" value="{{h.province}}">{{h.region}} {{h.nom}}</option>
+                    </select>
+                    <button class="btn btn-primary" (click)="aller()" style="width: 100%;">y aller</button>
+                </form>
+               
+            </div>
+
+          
+           
+            <!-- <div class="app-page"> -->
+                <!-- <div class="container" #map id="map-canvas"></div> -->
+            <!-- </div> -->
+        
+        
+    </section>
+
+</div>

@@ -4,7 +4,9 @@ export class Rdv{
     id:number;
     daterdv:string;
     heurerdv:string;
-    hopital:string;
+    user:number;
+    hopital:number;
     service:number;
     medecin:number;
+    SocialUser:String;
 }
